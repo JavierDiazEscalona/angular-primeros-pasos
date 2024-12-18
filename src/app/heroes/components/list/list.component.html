@@ -1,0 +1,25 @@
+
+<h3>Listado de Héroes</h3>
+<div *ngIf="deletedHero; else nothingWasDeleted">
+<h3>Héroe borrado <small class="text-danger"> {{ deletedHero }} </small> </h3>
+</div>
+
+<!-- ng-template es un div que no se construye a menos que se indique cuando, una condición-->
+<!-- esto le permite interactuar con ngIf, donde podemos usar referencias locales, nombradas luego de else-->
+<ng-template #nothingWasDeleted>
+    <h3>No ha borrado nada</h3>
+</ng-template>
+
+<!-- heroNames.length > 0 para que el botón de Borrar no se muestre si no hay nada que borrar-->
+<button
+    *ngIf="heroNames.length > 0"
+    (click)="removeLastHeroe()"
+    class="btn btn-outline-danger">Borrar último Héroe
+</button>
+
+<!-- ngFor permite iterar rápidamente sobre elementos html con elementos del list component -->
+<!-- ngFor se usa sobre un li, y duplica la cantidad de elementos en la lista -->
+
+<ul class="mt-2 list-group">
+    <li *ngFor="let name of heroNames" class="list-group-item">{{name}}</li>
+</ul>
