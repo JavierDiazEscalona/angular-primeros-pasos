@@ -1,0 +1,29 @@
+<h4>Agregar Personaje</h4>
+<form class="row" (ngSubmit)="emitCharacter()">
+    <input type="text" 
+    [(ngModel)]="character.name" 
+    name="name"
+    class="form-control mb-2" 
+    placeholder="Nombre">
+    <input type="number" 
+    [(ngModel)]="character.power"
+    name="power"
+    class="form-control mb-2" 
+    placeholder="Poder">
+
+    <button class="btn btn-primary">Agregar</button>
+</form>
+
+<!-- <pre>{{character | json}}</pre> -->
+
+<!-- el two way data binding, que no es recomendado, se utiliza asociando un evento
+ () a una propiedad al mismo tiempo [()], y es lo que hacemos con el ngModel.
+  Entonces, cada vez que actualicemos el input, se actualiza la referencia en
+  AddCharacterComponent, cambiando el name, por ejemplo, desde '' a lo que escribamos.
+  Es necesario agregarle un name al input o declararlo como standalone true.
+  
+  Al final, con el pipe json podemos observar los cambios en el objeto
+  y sus propiedades-->
+
+  <!-- el ngSubmit detecta el click o el enter en el submit y se usa sobre el formulario
+   Evita la propagación.-->
